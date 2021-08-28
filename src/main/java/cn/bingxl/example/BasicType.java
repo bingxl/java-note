@@ -1,3 +1,4 @@
+package cn.bingxl.example;
 
 /**
  * @author bingxl<scarecrowlxb@qq.com>
@@ -37,7 +38,8 @@ public class BasicType<T> {
 
     public static String stringBuild() {
         StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < 100; i++) {
+        int end = 100;
+        for (int i = 0; i < end; i++) {
             builder.append(i);
         }
         return builder.toString();
@@ -48,35 +50,34 @@ public class BasicType<T> {
         System.out.println(b);
     }
 
-    public static void statement() {
-        int a = 10;
-        int b = a;
+    // public static void statement() {
+    // enum HorseColor{RED,WHITE,BLANK};
+    // int a = 10;
+    // int b = a;
 
-        if (a + b > 20) {
+    // if (a + b > 20) {
 
-        } else if (a + b > 10) {
+    // } else if (a + b > 10) {
 
-        } else {
+    // } else {
 
-        }
+    // }
 
-        enum
-        HorseColor{RED,WHITE,BLANK}
-        ;
-        HorseColor myHorseColor = HorseColor.RED;
-        switch (myHorseColor) {
-            case RED: {
+    // HorseColor myHorseColor = HorseColor.RED;
+    // switch (myHorseColor) {
+    // case RED: {
 
-                break;
-            }
-            case WHITE: {
+    // break;
+    // }
+    // case WHITE: {
 
-                break;
-            }
-            default: {
+    // break;
+    // }
+    // default: {
 
-            }
-        }
+    // }
+    // }
 
-    }
+    // }
+
 }
