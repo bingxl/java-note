@@ -21,6 +21,7 @@ class ClassExample {
         zhangsan.name = "张三";
         Util.print(zhangsan);
         Util.print(Person.school);
+        example.mutableParam(1, 2, 3, 4);
     }
 
     public ClassExample() {

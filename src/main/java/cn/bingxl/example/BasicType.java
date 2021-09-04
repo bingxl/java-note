@@ -34,6 +34,15 @@ public class BasicType<T> {
 
         bigNumber();
 
+        // A 的码点是65， a是97
+        // 打印码点为0-96的所有字符
+        int charStart = 0;
+        int charEnd = 96;
+        System.out.println("--------码点字符------");
+        for (int i = charStart; i <= charEnd; i++) {
+            System.out.print(((char) i) + " ");
+        }
+        System.out.print("\n");
     }
 
     public static String stringBuild() {
