@@ -1,0 +1,12 @@
+{
+    "recommendations": [
+        "leetcode.vscode-leetcode",
+        "vscjava.vscode-java-debug",
+        "visualstudioexptteam.vscodeintellicode",
+        "rectcircle.vscode-p3c",
+        "redhat.java",
+        "vscjava.vscode-maven",
+        "vscjava.vscode-java-dependency",
+        "vscjava.vscode-java-test"
+    ]
+}
