@@ -36,4 +36,23 @@ public class RangeSumQueryImmutable303Test {
 
         }
     }
+
+    @Test
+    public void solution2Test() {
+        for (int groupId = 0; groupId < searchs.length; groupId++) {
+
+            int[] expect = expects[groupId];
+            int[][] searchLocations = searchs[groupId];
+            RangeSumQueryImmutable303 tclass = new RangeSumQueryImmutable303(nums[groupId]);
+
+            for (int searchId = 0; searchId < searchLocations.length; searchId++) {
+                int left = searchLocations[searchId][0];
+                int right = searchLocations[searchId][1];
+                int result = tclass.solution2(left, right);
+                System.out.println("left:" + left + " right:" + right + " result:" + result);
+                assertEquals(expect[searchId], result);
+            }
+
+        }
+    }
 }
