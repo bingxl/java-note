@@ -26,7 +26,7 @@ public class RangeSumQueryImmutable303 {
         if (left >= this.nums.length) {
             return 0;
         }
-        right = left > this.nums.length ? this.nums.length : right;
+        right = right > this.nums.length ? this.nums.length : right;
         int sum = 0;
         for (int k = left; k <= right; k++) {
             sum += this.nums[k];
