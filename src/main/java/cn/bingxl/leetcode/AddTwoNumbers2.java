@@ -10,13 +10,16 @@ package cn.bingxl.leetcode;
  * @author bingxl<bingxl@outlook.com>
  * 
  */
+
+import java.util.ArrayList;
+
 public class AddTwoNumbers2 {
 
     /**
      * Definition for singly-linked list.
      * 
      */
-    public class ListNode {
+    public static class ListNode {
         int val;
         ListNode next;
 
@@ -31,6 +34,32 @@ public class AddTwoNumbers2 {
             this.val = val;
             this.next = next;
         }
+    }
+
+    /**
+     * 
+     * @param li
+     * @return
+     */
+    public static int[] listToArray(ListNode li) {
+        ArrayList<Integer> list = new ArrayList<Integer>();
+
+        while (li != null) {
+            list.add(li.val);
+            li = li.next;
+        }
+
+        return list.stream().mapToInt(i -> i).toArray();
+    }
+
+    public static ListNode arrayToList(int[] nums) {
+        ListNode node = new ListNode();
+        ListNode cur = node;
+        for (int i : nums) {
+            cur.next = new ListNode(i);
+            cur = cur.next;
+        }
+        return node.next;
     }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {

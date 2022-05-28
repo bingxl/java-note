@@ -15,6 +15,21 @@ public class EnumExample {
      * 季节
      */
     enum SeasonEnum {
-        SPRING, SUMMER, AUTUM, WINTER;
+        /**
+         * 春
+         */
+        SPRING,
+        /**
+         * 夏
+         */
+        SUMMER,
+        /**
+         * 秋
+         */
+        AUTUM,
+        /**
+         * 冬
+         */
+        WINTER;
     }
 }
