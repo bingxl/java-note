@@ -3,6 +3,13 @@ package cn.bingxl.example;
 /**
  * @author bingxl<scarecrowlxb@qq.com>
  * @desc java基础类型
+ * byte short int long 整数
+ * float double 浮点数
+ * char
+ * boolean
+ * 
+ * 运算符
+ * + - * / %
  */
 import java.math.*;
 
@@ -21,6 +28,7 @@ public class BasicType<T> {
 
         // Boolean
         boolean isAduit = true;
+        isAduit = false;
         System.out.println(isAduit);
 
         int salary = 2000;
