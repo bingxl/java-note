@@ -12,9 +12,19 @@ public class MedianOfTwoSortedArrays4Test {
 
     @Test
     public void mergeAndSortTest() {
-        for (int i = 0; i < inputs.length; i++) {
-            int[][] input = inputs[i];
-            double result = ins.mergeAndSort(input[0], input[1]);
+        for (var i = 0; i < inputs.length; i++) {
+            var input = inputs[i];
+            var result = ins.mergeAndSort(input[0], input[1]);
+            assertTrue("expect: " + expects[i] + " but get: " + result, result == expects[i]);
+
+        }
+    }
+
+    @Test
+    public void linkSortedTest() {
+        for (var i = 0; i < inputs.length; i++) {
+            var input = inputs[i];
+            var result = ins.linkSorted(input[0], input[1]);
             assertTrue("expect: " + expects[i] + " but get: " + result, result == expects[i]);
 
         }
