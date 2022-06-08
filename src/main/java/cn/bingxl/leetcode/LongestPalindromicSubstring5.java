@@ -43,7 +43,6 @@ package cn.bingxl.leetcode;
  * 
  */
 
-// @lc code=start
 class LongestPalindromicSubstring5 {
     /**
      * 此方法耗时太长
@@ -86,4 +85,3 @@ class LongestPalindromicSubstring5 {
 
     }
 }
-// @lc code=end
