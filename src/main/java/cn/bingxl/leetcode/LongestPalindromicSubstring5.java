@@ -44,6 +44,9 @@ package cn.bingxl.leetcode;
  */
 
 class LongestPalindromicSubstring5 {
+
+    private char[] source;
+
     /**
      * 此方法耗时太长
      * 
@@ -56,13 +59,20 @@ class LongestPalindromicSubstring5 {
         if (sLen <= 1) {
             return s;
         }
-        var palindromicString = s.substring(0, 1);
+        var startIndex = 0;
+        var len = 1;
+        source = s.toCharArray();
 
         for (var start = 0; start < sLen; start++) {
             var fromIndex = start + 1;
-            var searchChar = s.charAt(start);
-            System.out.printf("start: %d, fromIndex: %d, char: %c, curMax: %s \n", start, fromIndex, searchChar,
-                    palindromicString);
+            var searchChar = source[start];
+
+            // 剩下的字符串中不会有比已找到的最长回文串更长的，提前结束
+            // 测试用例中有个 111111111111111111111111111111111 很长的字符串，
+            if (len >= sLen - start) {
+                break;
+            }
+
             do {
                 var nextPosition = s.indexOf(searchChar, fromIndex);
                 if (nextPosition == -1) {
@@ -70,18 +80,49 @@ class LongestPalindromicSubstring5 {
                     break;
                 }
                 // 找到相同字符，判断他们之间是否为回文
-                var substr = s.substring(start, nextPosition + 1);
-                var reverseStr = new StringBuffer(substr).reverse().toString();
-                System.out.printf("--------subStr: %s ---------\n", substr);
-                if (substr.equals(reverseStr) && substr.length() >= palindromicString.length()) {
-                    palindromicString = substr;
-                    System.out.printf("当前最大回文串： %s\n", substr);
+
+                var isPalid = isPalindrome(start, nextPosition);
+
+                if (isPalid && (nextPosition - start + 1) > len) {
+                    startIndex = start;
+                    len = nextPosition - start + 1;
+                    // System.out.printf("-start: %d, nextPosition: %d, len: %d---------\n", start,
+                    // nextPosition, len);
+
                 }
                 fromIndex++;
             } while (true);
 
         }
-        return palindromicString;
+        return s.substring(startIndex, len + startIndex);
 
     }
+
+    /**
+     * 判断 souce char数组的 [from, end]字串是否为回文
+     * 
+     * @param from
+     * @param end
+     * @return
+     */
+    private boolean isPalindrome(int from, int end) {
+        if (from > end) {
+            return false;
+        }
+
+        if (from == end) {
+            return true;
+        }
+        if (source[from] == source[end]) {
+            if (from == end - 1) {
+                return true;
+            }
+            return isPalindrome(from + 1, end - 1);
+
+        } else {
+            return false;
+        }
+
+    }
+
 }
