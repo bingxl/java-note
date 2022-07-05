@@ -43,6 +43,8 @@ package cn.bingxl.leetcode;
  * 
  */
 
+import java.util.HashSet;
+
 class LongestPalindromicSubstring5 {
 
     private char[] source;
@@ -125,4 +127,62 @@ class LongestPalindromicSubstring5 {
 
     }
 
+    /**
+     * 动态规划解法
+     * 
+     * @param s
+     * @return
+     */
+    public String dynamicPlanning(String s) {
+        var logmsg = new HashSet<String>();
+        logmsg.add("------------------开始处理字符串: " + s + "------------------\n");
+        int len = s.length();
+        if (len <= 1) {
+            return s;
+        }
+
+        int start = 0;
+        int maxLen = 1;
+        var chars = s.toCharArray();
+
+        var arr = new boolean[len][len];
+        for (var i = 0; i < len; i++) {
+            arr[i][i] = true;
+        }
+
+        // 按字串长度循环
+        for (var l = 2; l <= len; l++) {
+
+            // 左边界
+            for (var i = 0; i < len; i++) {
+                // 右边界 j - i + 1 = l
+                var j = l + i - 1;
+
+                // 右边越界，结束循环
+                if (j >= len) {
+                    break;
+                }
+
+                if (chars[i] != chars[j]) {
+                    arr[i][j] = false;
+                } else if (j - i < 3) {
+                    // j-i+1 <= 3
+                    arr[i][j] = true;
+                } else {
+                    // 因先按字串长度l从小到大循环，所以arr[i+1][j-1]是已经有值了
+                    arr[i][j] = arr[i + 1][j - 1];
+                }
+
+                if (arr[i][j] && j - i + 1 > maxLen) {
+                    start = i;
+                    maxLen = j - i + 1;
+                }
+                logmsg.add(String.format("L: %d i: %d, j: %d, start: %d, maxLen: %d \n", l, i, j, start, maxLen));
+            }
+
+        }
+
+        Util.logger.info(logmsg.toString());
+        return s.substring(start, maxLen + start);
+    }
 }
