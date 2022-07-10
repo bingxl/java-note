@@ -6,7 +6,8 @@ import static org.junit.Assert.assertEquals;
 
 public class LongestPalindromicSubstring5Test {
     LongestPalindromicSubstring5 in = new LongestPalindromicSubstring5();
-    String[][] cases = { { "aba", "aba" }, { "aaaaa", "aaaaa" }, { "abcde", "a" }, { "cbbd", "bb" } };
+    String[][] cases = { { "aba", "aba" }, { "aaaaa", "aaaaa" }, { "abcde", "a" }, { "cbbd", "bb" },
+            { "babbab", "babbab" } };
 
     @Test
     public void solution1Test() {
@@ -21,6 +22,14 @@ public class LongestPalindromicSubstring5Test {
     public void dynamicPlanningTest() {
         for (var ca : cases) {
             var get = in.dynamicPlanning(ca[0]);
+            assertEquals(String.format("except: %s, but get: %s", ca[1], get), ca[1], (get));
+        }
+    }
+
+    @Test
+    public void centerTest() {
+        for (var ca : cases) {
+            var get = in.center(ca[0]);
             assertEquals(String.format("except: %s, but get: %s", ca[1], get), ca[1], (get));
         }
     }

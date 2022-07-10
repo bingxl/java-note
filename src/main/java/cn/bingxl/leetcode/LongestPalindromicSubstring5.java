@@ -185,4 +185,43 @@ class LongestPalindromicSubstring5 {
         Util.logger.info(logmsg.toString());
         return s.substring(start, maxLen + start);
     }
+
+    /**
+     * 中心扩散法
+     * 
+     * @param s
+     * @return
+     */
+    public String center(String s) {
+        this.source = s.toCharArray();
+        // 当前最大回文串的起始位置和长度
+        int[] re = { 0, 0 };
+        for (var i = 0; i < s.length(); i++) {
+            // 中心点有一个或两个字符两种情况
+            int[] re1 = this.palindrome(this.source, i, i);
+            int[] re2 = this.palindrome(this.source, i, i + 1);
+            re = re1[1] > re[1] ? re1 : re;
+            re = re2[1] > re[1] ? re2 : re;
+
+        }
+
+        return s.substring(re[0], re[1] + re[0]);
+    }
+
+    private int[] palindrome(char[] s, int l, int r) {
+        // result[0] 回文串起始位置, result[1]回文串长度
+        int[] result = { l, 1 };
+
+        while (l >= 0 && r < s.length) {
+            if (s[l] != s[r]) {
+                break;
+            }
+            result = new int[] { l, r - l + 1 };
+
+            l--;
+            r++;
+        }
+
+        return result;
+    }
 }
